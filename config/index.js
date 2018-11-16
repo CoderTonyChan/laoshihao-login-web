@@ -11,7 +11,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/uac': {
-        target: 'http://dev-api.paascloud.net:7979/',
+        // target: 'http://dev-api.paascloud.net:7979/',
+        target: 'http://api.lshao.cn:7979/',
         changeOrigin: true,
         pathRewrite: {
           '^/uac': '/uac'
