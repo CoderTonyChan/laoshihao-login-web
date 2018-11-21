@@ -2,12 +2,12 @@
   <div class="header">
     <div class="header-in w">
       <div class="header-l">
-        <img src="../../../assets/images/logo.png">
+        <!-- <img src="../../../assets/images/logo.png"> -->
         <ul>
-          <li><a href="http://mall.paascloud.net" target="_blank" class="header-font">商城</a></li>
-          <li><a href="https://gitee.com/paascloud/paascloud-master" class="header-font" target="_blank">码云</a></li>
+          <li><a href="http://mall.lshao.cn" target="_blank" class="header-font">商城</a></li>
+          <!-- <li><a href="https://gitee.com/paascloud/paascloud-master" class="header-font" target="_blank">码云</a></li>
           <li><a href="https://github.com/paascloud/paascloud-master" class="header-font" target="_blank">GITHUB</a></li>
-          <li><a href="http://blog.paascloud.net" class="header-font" target="_blank">BLOG</a></li>
+          <li><a href="http://blog.paascloud.net" class="header-font" target="_blank">BLOG</a></li> -->
         </ul>
       </div>
       <div class="header-r">

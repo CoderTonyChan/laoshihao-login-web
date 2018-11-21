@@ -1,8 +1,8 @@
 <template>
   <div class="footer-big">
     <div class="footer-inner w">
-      <a href="http://paascloud.net" target="_blank" class="footer-l">© 2018 老师好商城 版权所有</a>
-      <!-- <a href="http://paascloud.net" target="_blank" class="footer-r">京ICP备17045502号</a> -->
+      <a href="http://mall.lshao.cn" target="_blank" class="footer-l">© 2018 老师好商城 版权所有</a>
+      <!-- <a href="http://mall.lshao.cn" target="_blank" class="footer-r">京ICP备17045502号</a> -->
     </div>
   </div>
 </template>
@@ -21,7 +21,9 @@
   }
 
   .footer-inner .footer-l {
-    float: left;
+    // float: left;
+    text-align: center;
+    display: block;
     line-height: 46px;
     color: #9a9a9a;
   }

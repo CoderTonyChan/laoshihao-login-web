@@ -12,7 +12,7 @@
           </div>
           <div class="reset-check">
             <input type="text" v-model="resetPwdPhoneForm.imageCode" @blur="checkImageCode" class="inputMa" placeholder="验证码">
-            <img v-lazy="imageCode" @click="getImage" class="check-ma"/>
+            <img :src="imageCode" @click="getImage" class="check-ma"/>
           </div>
           <div class="reset-msg">
             <input class="input-msg" v-model="resetPwdPhoneForm.smsCode" @blur="checkSmsCode" placeholder="短信验证码">
@@ -20,7 +20,7 @@
           </div>
           <input type="button" value="提交" @click="submitRestPwdWithPhone" :class="activeSubmitButton ? 'active-reset-submit-phone' : 'inactive-reset-submit-phone'">
         </div>
-        <footer class="reset-email"><a @click="loadPage('ResetPwdEmail')">其他方式箱重置密码</a></footer>
+        <footer class="reset-email"><a @click="loadPage('ResetPwdEmail')">其他方式重置密码</a></footer>
       </form>
     </div>
   </div>
