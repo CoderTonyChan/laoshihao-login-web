@@ -42,7 +42,7 @@ const getters = {
   },
   getRedirectUri: (state) => {
     if (!state.redirectUri) {
-      state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : 'http://mall.paascloud.net';
+      state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : 'http://mall.lshao.cn';
     }
     return state.redirectUri;
   }
@@ -190,12 +190,13 @@ const actions = {
   }
 };
 
-function jumpLoginPage () {
-  if (process.env.NODE_ENV === 'production') {
-    window.location.href = 'http://login.paascloud.net/login';
-  } else {
-    window.location.href = 'http://dev-login.paascloud.net/login';
-  }
+function jumpLoginPage() {
+  // if (process.env.NODE_ENV === 'production') {
+  //   window.location.href = 'http://login.paascloud.net/login';
+  // } else {
+  //   window.location.href = 'http://dev-login.paascloud.net/login';
+  // }
+  window.location.href = 'http://login.lshao.cn/login';
 }
 
 export default {

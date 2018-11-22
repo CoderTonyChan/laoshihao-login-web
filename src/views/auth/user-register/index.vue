@@ -1,6 +1,6 @@
 <template>
   <div  style="display: inline-block; margin-bottom: 70px;">
-    <img class="main-img" src="http://img.paascloud.net/login/paascloud/paascloud.png" alt="">
+    <!-- <img class="main-img" src="http://img.paascloud.net/login/paascloud/paascloud.png" alt=""> -->
     <div class="res">
       <div class="main-top">
         <i class="fa fa-user-o fa-lg" aria-hidden="true"></i>

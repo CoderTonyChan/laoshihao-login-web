@@ -1,6 +1,6 @@
 <template>
   <div style="display: inline-block; margin-bottom: 60px;">
-    <img class="main-img" src="http://img.paascloud.net/login/paascloud/paascloud.png" alt="">
+    <!-- <img class="main-img" src="http://img.paascloud.net/login/paascloud/paascloud.png" alt=""> -->
     <div class="res">
       <div class="main-top">
         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -25,9 +25,9 @@
           <hr/><p>其他方式登录</p><hr/>
         </div>
         <div class="last">
-          <a href="#"><img src="../../../assets/images/login/git1.png" alt=""></a>
+          <!-- <a href="#"><img src="../../../assets/images/login/git1.png" alt=""></a>
           <a href="#"><img src="../../../assets/images/login/git2.png" alt=""></a>
-          <a href="#"><img src="../../../assets/images/login/git3.png" alt=""></a>
+          <a href="#"><img src="../../../assets/images/login/git3.png" alt=""></a>  -->
           <a href="/uac/auth/qq"><img src="../../../assets/images/login/git4.png" alt=""></a>
           <a href="/auth/weixin"><img src="../../../assets/images/login/git5.png" alt=""></a>
         </div>
@@ -263,10 +263,12 @@
         margin: 0 12px;
       }
       a:first-child img {
-        margin-left: 0;
+        float: left;
+        margin-left: 80px;
       }
       a:last-child img {
-        margin-right: 0;
+        float: right;
+        margin-right: 80px;
       }
     }
   }
