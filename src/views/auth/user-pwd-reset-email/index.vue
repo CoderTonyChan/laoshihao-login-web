@@ -64,6 +64,7 @@
         });
       },
       validateEmail() {
+        console.log('validateEmail');
         this.checkEmailResult = false;
         let email = this.resetPwdEmailForm.email;
         if (!email) {

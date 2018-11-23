@@ -76,7 +76,7 @@
         }).then((res) => {
           if (res.code === 200) {
             // 从cookie获取resetPwdKey
-            let resetPwdKey = Cookies.get('PASSCLOUD_PAAS_resetPwdKey');
+            let resetPwdKey = Cookies.get('LAOSHIHAO_resetPwdKey');
             console.info('resetPwdKey:', resetPwdKey);
             that.loadPage('ResetPwd', {resetPwdKey: resetPwdKey});
           } else {

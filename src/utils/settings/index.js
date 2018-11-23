@@ -1,7 +1,7 @@
 // 暂时修改为生产和线上一样 没必要不一样
 const gbs = {
   host: 'http://lshao.cn',
-  lockr_prefix: 'LAOSHIHAO_PAAS_',
+  lockr_prefix: 'LAOSHIHAO_',
   secret_key: '^#rwd6Ffz$X5alRN',
   domain: '.lshao.cn',
   secret: {
@@ -12,10 +12,10 @@ const gbs = {
 const cbs = {};
 
 if (process.env.NODE_ENV === 'production') {
-  gbs.domain = '.paascloud.net';
+  // gbs.domain = '.paascloud.net';
   gbs.domain = '.lshao.cn';
 } else {
-  gbs.domain = '.paascloud.net';
+  // gbs.domain = '.paascloud.net';
   gbs.domain = '.lshao.cn';
   // gbs.lockr_prefix += 'DEV_';
 }
