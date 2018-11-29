@@ -96,6 +96,7 @@ Vue.prototype.$http.interceptors.response.use((res) => {
 router.beforeEach((to, from, next) => {
   store.dispatch('get_access_token', (res) => {
     if (res) {
+      console.log(`get_access_token ${res}`);
       window.location.href = store.getters.getRedirectUri;
     } else {
       NProgress.start();

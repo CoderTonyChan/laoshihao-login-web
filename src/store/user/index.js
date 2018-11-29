@@ -42,7 +42,8 @@ const getters = {
   },
   getRedirectUri: (state) => {
     if (!state.redirectUri) {
-      state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : 'http://mall.lshao.cn';
+      var defaultWeb = process.env.NODE_ENV === 'production' ? 'http://mall.lshao.cn' : 'http://dev-mall.lshao.cn';
+      state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : defaultWeb;
     }
     return state.redirectUri;
   }
@@ -191,6 +192,7 @@ const actions = {
 };
 
 function jumpLoginPage() {
+  console.log(`jumpLoginPage process.env.NODE_ENV ${process.env.NODE_ENV}`);
   if (process.env.NODE_ENV === 'production') {
     window.location.href = 'http://login.lshao.cn/login';
   } else {
