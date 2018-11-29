@@ -97,9 +97,10 @@ router.beforeEach((to, from, next) => {
   store.dispatch('get_access_token', (res) => {
     if (res) {
       console.log(`get_access_token res:${res} store.getters.getRedirectUri:${store.getters.getRedirectUri} `);
+      console.log(`process.env.NODE_ENV :${process.env.NODE_ENV} `);
 
       // 跳转问题
-      // window.location.href = store.getters.getRedirectUri;
+      window.location.href = store.getters.getRedirectUri;
     } else {
       NProgress.start();
       next();
