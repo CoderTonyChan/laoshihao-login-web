@@ -87,7 +87,7 @@
           if (res && res.code === 200) {
             this.$store.dispatch('update_auth_token', res.result);
             console.log(this.redirectUri);
-            // window.location.href = this.redirectUri;
+            window.location.href = this.redirectUri;
           }
         }).catch((err) => {
           console.log(err);

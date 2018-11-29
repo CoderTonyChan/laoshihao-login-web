@@ -46,10 +46,10 @@ Vue.prototype.$http = axios.create({
 });
 
 if (process.env.NODE_ENV === 'production') {
-  Vue.prototype.$http.defaults.baseURL = 'http://api.paascloud.net/';
+  // Vue.prototype.$http.defaults.baseURL = 'http://api.paascloud.net/';
+  Vue.prototype.$http.defaults.baseURL = 'http://api.lshao.cn/';
 }
-
-Vue.prototype.$http.defaults.baseURL = 'http://api.lshao.cn/';
+// Vue.prototype.$http.defaults.baseURL = 'http://api.lshao.cn/';
 
 Vue.prototype.$http.interceptors.response.use((res) => {
   if (res.data.code === 200) {

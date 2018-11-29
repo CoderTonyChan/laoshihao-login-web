@@ -12,10 +12,8 @@ const gbs = {
 const cbs = {};
 
 if (process.env.NODE_ENV === 'production') {
-  // gbs.domain = '.paascloud.net';
   gbs.domain = '.lshao.cn';
 } else {
-  // gbs.domain = '.paascloud.net';
   gbs.domain = '.lshao.cn';
   gbs.lockr_prefix += 'DEV_';
 }
