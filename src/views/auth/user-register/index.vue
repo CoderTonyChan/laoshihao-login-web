@@ -8,13 +8,17 @@
         <a href="#" class="zhu" @click="loadPage('Login')">登录</a>
       </div>
       <div class="main-bot">
-        <div class="field-inline">
+        <!-- <div class="field-inline">
           <p>登录名</p>
           <input class='main-input' type="text" v-model="registerForm.loginName"/>
         </div>
         <div class="field-inline">
           <p>邮箱</p>
           <input class='main-input' type="text" v-model="registerForm.email"/>
+        </div> -->
+        <div class="field-inline">
+          <p>手机号</p>
+          <input class='main-input' type="text" v-model="registerForm.mobileNo" @blur="validatePhone" />
         </div>
         <div class="field-inline">
           <p>密码</p>
@@ -24,15 +28,17 @@
           <p>确认密码</p>
           <input class='main-input' type="password" v-model="registerForm.confirmPwd"/>
         </div>
-        <div class="field-inline">
-          <p>手机号</p>
-          <input class='main-input' type="text" v-model="registerForm.mobileNo"/>
-        </div>
         <div class="register-check-dev">
           <p>验证码</p>
-          <input type="text" v-model="registerForm.imageCode" class="inputMa" placeholder="验证码">
+          <input type="text" v-model="registerForm.imageCode" class="inputMa" @blur="checkImageCode" placeholder="验证码">
           <img :src="imageCode" @click="getImage" class="check-ma"/>
         </div>
+        <div class="register-check-sms">
+          <p>短信验证码</p>
+          <input type="text" v-model="registerForm.smsCode" class="inputMa" placeholder="短信验证码">
+          <pc-timer-button :class="activeSendSmsButton && isTimerStop ? 'active-send-sms-code' : 'inactive-send-sms-code'" ref="timerBtn" @on-run="sendPhoneCode" @on-stop="isTimerStop = true">发送验证码</pc-timer-button>
+        </div>
+        
         <button class="register-btn" @click="submit">注册</button>
       </div>
     </div>
@@ -51,8 +57,12 @@
           email: '',
           confirmPwd: '',
           imageCode: '',
+          smsCode: '',
           registerSource: 'PC'
-        }
+        },
+        checkTelephoneResult: false,
+        checkKaptchaCodeResult: false,
+        isTimerStop: true
       };
     },
     created () {
@@ -81,7 +91,7 @@
           this.register(() => {
             this.$store.dispatch('new_notice', {
               autoClose: true,
-              content: '注册成功, 请登录邮箱激活用户'
+              content: '注册成功'
             });
             this.loadPage('Login');
           });
@@ -93,6 +103,8 @@
         }
       },
       register (resolve) {
+        var params = this.registerForm;
+        params.imageCode = null;
         this.$http({
           method: 'POST',
           headers: {
@@ -100,7 +112,7 @@
             'deviceId': this.deviceId
           },
           url: '/uac/auth/register',
-          params: this.registerForm
+          params: params
         }).then((res) => {
           this.getImage();
           if (res) {
@@ -110,14 +122,94 @@
           console.log(err);
         });
       },
+      validatePhone() {
+        this.checkTelephoneResult = false;
+        let mobileNo = this.registerForm.mobileNo;
+        if (!mobileNo) {
+          this.$store.dispatch('new_notice', {
+            autoClose: true,
+            content: '手机号码不能为空'
+          });
+          return;
+        }
+        let that = this;
+        let reg = /^1\d{10}$/;
+        let result = reg.test(mobileNo);
+        if (!result) {
+          that.$store.dispatch('new_notice', {
+            autoClose: true,
+            content: '手机号码格式不正确'
+          });
+        } else {
+          this.$http({
+            method: 'POST',
+            url: '/uac/auth/checkPhoneActive/' + mobileNo,
+            data: ''
+          }).then((res) => {
+            if (!res.result) {
+              that.$store.dispatch('new_notice', {
+                autoClose: true,
+                content: '帐号没有激活'
+              });
+            }
+            that.checkTelephoneResult = res.result;
+          });
+        }
+      },
+      checkImageCode () {
+        let that = this;
+        this.$http({
+          method: 'GET',
+          url: `/uac/auth/code/image`,
+          headers: {
+            'deviceId': that.deviceId
+          },
+          params: {
+            imageCode: this.registerForm.imageCode
+          }
+        }).then((res) => {
+          that.checkKaptchaCodeResult = res.result;
+        });
+      },
+      sendPhoneCode () {
+        let mobileNo = this.registerForm.mobileNo;
+        this.isTimerStop = false;
+        if (!mobileNo) {
+          this.$store.dispatch('new_notice', {
+            autoClose: true,
+            content: '手机号码不能为空'
+          });
+          return;
+        }
+        this.$refs.timerBtn.start();
+        this.$http({
+          method: 'POST',
+          url: `/uac/auth/code/sms`,
+          headers: {
+            'deviceId': this.deviceId
+          },
+          params: {
+            mobile: mobileNo,
+            imageCode: this.registerForm.imageCode
+          }
+        }).then((res) => {
+          if (res.code === 200) {
+            console.info('发送验证码成功');
+          } else {
+            alert(res.message);
+            this.getImage();
+            this.$refs.timerBtn.stop();
+          }
+        });
+      },
       formValidate () {
         let result = {
           status: false,
           msg: ''
         };
         // 验证用户名是否为空
-        if (!this.validate(this.registerForm.loginName, 'require')) {
-          result.msg = '用户名不能为空';
+        if (!this.validate(this.registerForm.mobileNo, 'require')) {
+          result.msg = '手机号不能为空';
           return result;
         }
 
@@ -130,16 +222,16 @@
 //          }
 //        }, this.registerForm.loginName, 'loginName');
         // 验证邮箱
-        if (!this.validate(this.registerForm.email, 'require')) {
-          result.msg = '邮箱不能为空';
-          return result;
-        }
+        // if (!this.validate(this.registerForm.email, 'require')) {
+        //   result.msg = '邮箱不能为空';
+        //   return result;
+        // }
 
         // 验证邮箱正则
-        if (!this.validate(this.registerForm.email, 'email')) {
-          result.msg = '邮箱格式不正确';
-          return result;
-        }
+        // if (!this.validate(this.registerForm.email, 'email')) {
+        //   result.msg = '邮箱格式不正确';
+        //   return result;
+        // }
 
         // 校验邮箱是否存在
 //        this.checkCount((res) => {
@@ -192,8 +284,8 @@
 //          }
 //        }, this.registerForm.mobileNo, 'mobileNo');
 
-        if (!this.validate(this.registerForm.imageCode, 'require')) {
-          result.msg = '验证码不能为空';
+        if (!this.validate(this.registerForm.smsCode, 'require')) {
+          result.msg = '短信验证码不能为空';
           return result;
         }
 
@@ -212,6 +304,11 @@
           },
           success: resolve
         });
+      }
+    },
+    computed: {
+      activeSendSmsButton() {
+        return this.checkKaptchaCodeResult && this.checkTelephoneResult;
       }
     },
     components: {
@@ -297,6 +394,18 @@
         cursor: pointer;
         color: #ffffff;
       }
+      .btn {
+        width: 100px;
+        height: 40px;
+        margin-bottom: 20px;
+        outline: 0;
+        font-size: 16px !important;
+        background-color: #fe7300;
+        border: 0;
+        cursor: pointer;
+        color: #ffffff;
+        margin-left: 7px;
+    }
     }
   }
 
@@ -326,4 +435,57 @@
     line-height: 18px;
     font-size: 16px;
   }
+
+
+  .register-check-sms input {
+    margin-left: 13px;
+    float: left;
+    width: 135px;
+    height: 40px;
+    padding-right: 7px;
+    border-radius: 2px;
+    border: 1px solid #dce3e8;
+    outline: none;
+    background: #F3F6F8;
+    padding-left: 26px;
+    line-height: 18px;
+    font-size: 16px;
+  }
+
+   .register-check-sms p {
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .inactive-send-sms-code {
+    width: 106px !important;
+    height: 40px;
+    border: 1px solid #DCE4E6;
+    float: right;
+    padding: .5em .92857em;
+    font-weight: normal;
+    border-radius: 2px;
+    box-shadow: none !important;
+    background-color: #dcddde !important;
+    color: rgba(0, 0, 0, 0.4) !important;
+    opacity: 0.3 !important;
+    pointer-events: none;
+    cursor: default;
+  }
+  .active-send-sms-code {
+    width: 106px !important;
+    height: 40px;
+    border: 1px solid #DCE4E6;
+    float: right;
+    padding: .5em .92857em;
+    font-weight: normal;
+    border-radius: 2px;
+    box-shadow: none !important;
+    cursor: pointer;
+    color: #fff;
+    background-color: #fe7300;
+  }
+
 </style>

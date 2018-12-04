@@ -20,7 +20,7 @@
           </div>
           <input type="button" value="提交" @click="submitRestPwdWithPhone" :class="activeSubmitButton ? 'active-reset-submit-phone' : 'inactive-reset-submit-phone'">
         </div>
-        <footer class="reset-email"><a @click="loadPage('ResetPwdEmail')">其他方式重置密码</a></footer>
+        <!-- <footer class="reset-email"><a @click="loadPage('ResetPwdEmail')">其他方式重置密码</a></footer> -->
       </form>
     </div>
   </div>

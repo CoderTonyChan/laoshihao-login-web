@@ -18,7 +18,7 @@
         <div class="main-password">
           <input id="button" type="checkbox" class="button" @click="rememberMeFn" :checked="rememberMe" value="Bike" title=""/>
           <label for="button" class="remMe">记住我</label>
-          <a class="fog" @click="loadPage('ResetPwdEmail')">忘记密码?</a>
+          <a class="fog" @click="loadPage('ResetPwdPhone')">忘记密码?</a>
         </div>
         <button class="login" @click="doLogin">登录</button>
         <div class="other">
