@@ -21,16 +21,16 @@
           <a class="fog" @click="loadPage('ResetPwdPhone')">忘记密码?</a>
         </div>
         <button class="login" @click="doLogin">登录</button>
-        <div class="other">
+        <!-- <div class="other">
           <hr/><p>其他方式登录</p><hr/>
         </div>
         <div class="last">
-          <!-- <a href="#"><img src="../../../assets/images/login/git1.png" alt=""></a>
+          <a href="#"><img src="../../../assets/images/login/git1.png" alt=""></a>
           <a href="#"><img src="../../../assets/images/login/git2.png" alt=""></a>
-          <a href="#"><img src="../../../assets/images/login/git3.png" alt=""></a>  -->
+          <a href="#"><img src="../../../assets/images/login/git3.png" alt=""></a>
           <a href="/uac/auth/qq"><img src="../../../assets/images/login/git4.png" alt=""></a>
           <a href="/auth/weixin"><img src="../../../assets/images/login/git5.png" alt=""></a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

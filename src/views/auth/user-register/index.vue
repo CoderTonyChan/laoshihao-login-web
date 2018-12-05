@@ -141,19 +141,20 @@
             content: '手机号码格式不正确'
           });
         } else {
-          this.$http({
-            method: 'POST',
-            url: '/uac/auth/checkPhoneActive/' + mobileNo,
-            data: ''
-          }).then((res) => {
-            if (!res.result) {
-              that.$store.dispatch('new_notice', {
-                autoClose: true,
-                content: '帐号没有激活'
-              });
-            }
-            that.checkTelephoneResult = res.result;
-          });
+          that.checkTelephoneResult = true;
+          // this.$http({
+          //   method: 'POST',
+          //   url: '/uac/auth/checkPhoneActive/' + mobileNo,
+          //   data: ''
+          // }).then((res) => {
+          //   if (!res.result) {
+          //     that.$store.dispatch('new_notice', {
+          //       autoClose: true,
+          //       content: '帐号没有激活'
+          //     });
+          //   }
+          //   that.checkTelephoneResult = res.result;
+          // });
         }
       },
       checkImageCode () {
@@ -393,6 +394,7 @@
         border: 0;
         cursor: pointer;
         color: #ffffff;
+        margin-top: 10px;
       }
       .btn {
         width: 100px;
