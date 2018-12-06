@@ -88,6 +88,8 @@
             this.$store.dispatch('update_auth_token', res.result);
             console.log(`登录成功 : this.redirectUri:${this.redirectUri}`);
             console.log(`process.env.NODE_ENV :${process.env.NODE_ENV} `);
+            console.log(res.result);
+            // debugger;
             window.location.href = this.redirectUri;
           }
         }).catch((err) => {
@@ -104,7 +106,6 @@
             'deviceId': that.deviceId
           }
         }).then((res) => {
-          console.log(res);
           that.imageCode = 'data:image/jpg;base64,' + res.result;
         });
       },

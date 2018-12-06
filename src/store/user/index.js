@@ -23,7 +23,7 @@ const getters = {
     return state.rememberMe;
   },
   getRefreshToken: (state) => {
-    if (!state.refreshToken) {
+    if (!state.refreshToken.refresh_token) {
       state.refreshToken = PcCookie.get(enums.USER.REFRESH_TOKEN) ? JSON.parse(PcCookie.get(enums.USER.REFRESH_TOKEN)) : {};
     }
     return state.refreshToken.refresh_token;
@@ -83,12 +83,12 @@ const mutations = {
     if (isRemember) {
       expires = 7;
     }
-    // debugger;
     delete authToken['jti'];
     delete authToken['token_type'];
     let refreshToken = {};
     Object.assign(refreshToken, authToken);
     // delete authToken['scope'];
+    // TODO: 不知道为啥删了
     delete authToken['refresh_token'];
     delete refreshToken['access_token'];
     state.refreshToken = refreshToken;
@@ -162,7 +162,8 @@ const actions = {
             commit('deleteMenuList');
             commit('deleteRememberMe');
             jumpLoginPage();
-          }
+          };
+          console.log(`判断是否需要续租`);
         });
       }
     }
