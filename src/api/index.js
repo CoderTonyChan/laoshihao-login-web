@@ -9,8 +9,8 @@ export function refreshToken () {
     },
     url: REFRESH_TOKEN_URL,
     auth: {
-      username: 'paascloud-client-uac',
-      password: 'paascloudClientSecret'
+      username: 'lshao-client-uac',
+      password: 'lshaoClientSecret'
     },
     params: {
       refreshToken: store.getters.getRefreshToken,
