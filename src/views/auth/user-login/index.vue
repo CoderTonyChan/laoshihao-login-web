@@ -90,7 +90,7 @@
             console.log(`process.env.NODE_ENV :${process.env.NODE_ENV} `);
             console.log(res.result);
             // debugger;
-            window.location.href = this.redirectUri;
+            // window.location.href = this.redirectUri;
           }
         }).catch((err) => {
           console.log(err);
