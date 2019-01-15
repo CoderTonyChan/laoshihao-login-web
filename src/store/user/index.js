@@ -41,10 +41,14 @@ const getters = {
     return state.authToken;
   },
   getRedirectUri: (state) => {
-    if (!state.redirectUri) {
-      var defaultWeb = process.env.NODE_ENV === 'production' ? 'http://mall.lshao.cn' : 'http://dev-mall.lshao.cn';
-      state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : defaultWeb;
-    }
+    // if (!state.redirectUri) {
+    //   var defaultWeb = process.env.NODE_ENV === 'production' ? 'http://mall.lshao.cn' : 'http://dev-mall.lshao.cn';
+    //   state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : defaultWeb;
+    // }
+    // 每次都读
+    var defaultWeb = process.env.NODE_ENV === 'production' ? 'http://mall.lshao.cn' : 'http://dev-mall.lshao.cn';
+    state.redirectUri = PcCookie.get(enums.USER.REDIRECT_URI) ? PcCookie.get(enums.USER.REDIRECT_URI) : defaultWeb;
+    console.log(enums.USER.REDIRECT_URI);
     return state.redirectUri;
   }
 };
