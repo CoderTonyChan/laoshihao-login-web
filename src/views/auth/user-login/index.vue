@@ -37,7 +37,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {enums, PcCookie} from '../../../utils/';
+  // import {enums, PcCookie} from '../../../utils/';
   export default {
     data () {
       return {
@@ -89,16 +89,14 @@
           this.getImage();
           if (res && res.code === 200) {
             this.$store.dispatch('update_auth_token', res.result);
-            console.log(`登录成功 : this.redirectUri:${res.redirectUri}`);
+            console.log(`登录成功 : this.redirectUri:${this.redirectUri}`);
             console.log(`process.env.NODE_ENV :${process.env.NODE_ENV} `);
             console.log(res.result);
             // debugger;
             // window.location.href = this.redirectUri;
-            PcCookie.set({
-              key: enums.USER.REDIRECT_URI,
-              value: res.redirectUri});
-
-            console.log(`登录成功 : this.redirectUri:${this.redirectUri}`);
+            // PcCookie.set({
+            //   key: enums.USER.REDIRECT_URI,
+            //   value: res.redirectUri});
           }
         }).catch((err) => {
           console.log(err);

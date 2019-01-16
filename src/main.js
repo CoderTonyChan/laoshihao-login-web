@@ -101,7 +101,7 @@ router.beforeEach((to, from, next) => {
 
       // 跳转问题
       // console.log(`跳转 `);
-      // window.location.href = store.getters.getRedirectUri;
+      window.location.href = store.getters.getRedirectUri;
     } else {
       NProgress.start();
       next();
