@@ -72,7 +72,8 @@
           params: {
             mobile: that.resetPwdPhoneForm.mobileNo,
             smsCode: this.resetPwdPhoneForm.smsCode
-          }
+          },
+          withCredentials: true
         }).then((res) => {
           if (res.code === 200) {
             // 从cookie获取resetPwdKey
