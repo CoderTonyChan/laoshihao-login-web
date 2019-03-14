@@ -1,27 +1,29 @@
 
 <template>
-  <div style="display: inline-block; margin-bottom: 60px;">
+  <div class="user-login">
     <!-- <img class="main-img" src="http://img.paascloud.net/login/paascloud/paascloud.png" alt=""> -->
     <div class="res">
-      <div class="main-top">
+      <h1>登录老师好在线</h1>
+      <!-- <div class="main-top">
         <i class="fa fa-user-o" aria-hidden="true"></i>
         <span class="login">登录</span>
         <a href="#" class="login-register" @click="loadPage('Register')">注册</a>
-      </div>
+      </div> -->
       <div class="main-bot">
-        <input class="login-input" @keyup.13="doLogin" v-model="loginForm.loginName" type="text" placeholder="请输入帐号"/>
+        <input class="login-input" @keyup.13="doLogin" v-model="loginForm.loginName" type="text" placeholder="请输入手机号"/>
         <input class="login-input" @keyup.13="doLogin" v-model="loginForm.loginPwd" type="password"
                placeholder="请输入密码"/>
         <div class="image-code-div">
-          <input type="text" v-model="loginForm.captchaCode" placeholder="验证码">
+          <input type="text" v-model="loginForm.captchaCode" placeholder="请输入正确验证码">
           <img :src="imageCode" @click="getImage"/>
         </div>
+        <button class="login" @click="doLogin">登录</button>
+
         <div class="main-password">
           <input id="button" type="checkbox" class="button" @click="rememberMeFn" :checked="rememberMe" value="Bike" title=""/>
-          <label for="button" class="remMe">记住我</label>
+          <label for="button" class="remMe">7天内自动登录</label>
           <a class="fog" @click="loadPage('ResetPwdPhone')">忘记密码?</a>
         </div>
-        <button class="login" @click="doLogin">登录</button>
         <!-- <div class="other">
           <hr/><p>其他方式登录</p><hr/>
         </div>
@@ -152,24 +154,32 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
+  .user-login{
+
+	width: 1080px;
+	height: 582px;
+	background-color: #ffffff;
+	border: solid 1px #e6e6e6;
+	border-top: solid 1px #4d7fff;
+    margin-top: -115px;
+  }
   .image-code-div {
-    width: 320px;
-    height: 40px;
+    width: 380px;
+    height: 50px;
     margin-bottom: 14px;
     input {
-      width: 210px;
-      height: 40px;
+      width: 265px;
+      height: 50px;
       outline: none;
       font-size: 14px;
       text-indent: 1em;
       border-radius: 2px;
-      background: #F3F6F8;
-      border: 1px solid #dce3e8;
+      border: 1px solid #e6e6e6;
     }
     img {
-      width: 106px !important;
-      height: 40px;
-      border: 1px solid #DCE4E6;
+      width: 95px !important;
+      height: 50px;
+      border: 1px solid #e6e6e6;
       padding-left: 0;
       float: right;
     }
@@ -182,10 +192,17 @@
   }
 
   .main .res {
-    float: right;
     width: 420px;
-    margin: 0 30px;
     background-color: #ffffff;
+    margin: 0 auto;
+    h1 {
+      font-size: 36px;
+      // display: block;
+      // margin: 0 auto;
+      margin-top: 90px;
+      text-align: center;
+    }
+
     .main-top {
       height: 25px;
       line-height: 25px;
@@ -206,18 +223,18 @@
       }
     }
     .main-bot {
-      width: 320px;
-      margin: 20px 50px 30px;
+      width: 380px;
+      margin: 65px 24px 30px;
       .login-input {
         width: 100%;
-        height: 40px;
-        margin-bottom: 20px;
+        height: 50px;
+        margin-bottom: 28px;
         outline: 0;
         font-size: 14px;
-        color: #a1a1a2;
+        color: #b3b3b3;
         text-indent: 1em;
-        background-color: #f3f6f8;
-        border: 1px solid #dce3e8;
+        border-radius: 4px;
+        border: solid 1px #e6e6e6;
       }
       .button {
         width: 15px;
@@ -235,15 +252,18 @@
         }
       }
       .login {
-        border: 0;
-        outline: 0;
-        width: 100%;
-        height: 40px;
-        color: #ffffff;
-        cursor: pointer;
-        font-size: 16px;
-        margin-bottom: 20px;
-        background-color: #fe7300;
+        
+    margin-top: 25px;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    height: 50px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background-color: #4d7fff;
+    border-radius: 4px;
       }
     }
     .other {

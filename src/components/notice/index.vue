@@ -32,7 +32,7 @@
       setStyle () {
         return {
           color: this.myOptions.textColor || '#fff',
-          background: this.myOptions.backgroundColor || '#fc5050'
+          background: this.myOptions.backgroundColor || '#4d7fff'
         };
       },
       setTime () {

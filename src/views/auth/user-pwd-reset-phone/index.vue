@@ -2,10 +2,11 @@
   <div class="reset-outer w">
     <div class="reset-pwd-phone">
       <form class="reset-form">
-        <header class="reset-header">
+        <!-- <header class="reset-header">
           <div class="send-title">重置密码</div>
           <div class="no-reset"><a href="#" @click="loadPage('Login')">返回登录</a></div>
-        </header>
+        </header> -->
+        <h1>重置密码</h1>
         <div class="reset-content">
           <div class="reset-phone">
             <input class="reset-phone" v-model="resetPwdPhoneForm.mobileNo" type="text" @blur="validatePhone" placeholder="手机号码">
@@ -19,8 +20,12 @@
             <pc-timer-button :class="activeSendSmsButton && isTimerStop ? 'active-send-sms-code' : 'inactive-send-sms-code'" ref="timerBtn" @on-run="sendPhoneCode" @on-stop="isTimerStop = true">发送验证码</pc-timer-button>
           </div>
           <input type="button" value="提交" @click="submitRestPwdWithPhone" :class="activeSubmitButton ? 'active-reset-submit-phone' : 'inactive-reset-submit-phone'">
+          <div>
+            <a href="#" @click="loadPage('Login')" style="float: right;margin-top: 15px;">返回登录</a>
+          </div>
         </div>
         <!-- <footer class="reset-email"><a @click="loadPage('ResetPwdEmail')">其他方式重置密码</a></footer> -->
+       
       </form>
     </div>
   </div>
@@ -232,16 +237,25 @@
 </script>
 <style rel="stylesheet/scss" lang="scss">
   .reset-outer {
-    height: 360px;
+    height: 540px;
     position: relative;
-    margin-top: 100px;
+    margin-top: -160px;
   }
   .reset-pwd-phone {
-    width: 480px;
-    height: 360px;
-    position: absolute;
-    left: 50%;
-    margin-left: -240px;
+    width: 1080px;
+    height: 600px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    border-top: solid 1px #4d7fff;
+    // margin-top: -115px;
+    h1 {
+      font-size: 36px;
+      // display: block;
+      // margin: 0 auto;
+      margin-top: 90px;
+      text-align: center;    
+      margin-bottom: 60px;
+    }
   }
 
   .send-form {
@@ -258,11 +272,10 @@
   .reset-form {
     display: block;
     padding: 23px 30px 55px 30px;
-    height: 360px;
-    border: 1px solid #E3E9ED;
+    height: 540px;
     background-color: #fff;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   .reset-header, .send-header {
@@ -291,11 +304,11 @@
   }
 
   .reset-content {
-    width: 298px;
-    height: 200px;
-    position: relative;
-    left: 50%;
-    margin-left: -149px;
+    
+    width: 380px;
+    height: 400px;
+    margin: 0 auto;
+    display: block;
   }
 
   .send-content {
@@ -309,10 +322,9 @@
   .reset-phone, .send-email {
     width: 298px;
     height: 40px;
-    background: #F3F6F8;
     line-height: 18px;
     font-size: 16px;
-    margin-bottom: 14px;
+    margin-bottom: 30px;
 
   }
 
@@ -327,65 +339,67 @@
   }
 
   .reset-phone input {
+        height: 50px;
+        width: 380px;
     padding: 10px 12px;
     box-shadow: none;
-    border-radius: 2px;
+    border-radius: 4px;
     border: 1px solid #dce3e8;
     outline: none;
   }
 
   .reset-check {
-    width: 298px;
-    height: 40px;
-    margin-bottom: 14px;
+    width: 380px;
+    height: 50px;
+    margin-bottom: 30px;
 
   }
 
   .reset-check input {
     float: left;
-    width: 185px;
-    height: 40px;
+    width: 280px;
+    height: 50px;
     padding-right: 7px;
-    border-radius: 2px;
+    border-radius: 4px;
     border: 1px solid #dce3e8;
     outline: none;
-    background: #F3F6F8;
+    // background: #F3F6F8;
     padding-left: 10px;
     line-height: 18px;
     font-size: 16px;
   }
 
   .check-ma {
-    width: 106px !important;
-    height: 40px;
+    width: 86px !important;
+    height: 50px;
     border: 1px solid #DCE4E6;
     padding-left: 0;
     float: right;
+    border-radius: 4px;
   }
 
   .reset-msg {
-    width: 298px;
-    height: 40px;
-    margin-bottom: 14px;
+    width:  380px;
+    height: 50px;
+    margin-bottom: 30px;
   }
 
   .input-msg {
     float: left;
-    width: 185px;
-    height: 40px;
+    width: 280px;
+    height: 50px;
     padding-right: 7px;
-    border-radius: 2px;
+    border-radius: 4px;
     border: 1px solid #dce3e8;
     outline: none;
-    background: #F3F6F8;
     padding-left: 10px;
     line-height: 18px;
     font-size: 16px;
   }
 
-  .inactive-send-sms-code {
-    width: 106px !important;
-    height: 40px;
+  .reset-pwd-phone .inactive-send-sms-code {
+    width: 86px !important;
+    height: 50px;
     border: 1px solid #DCE4E6;
     float: right;
     padding: .5em .92857em;
@@ -396,11 +410,12 @@
     color: rgba(0, 0, 0, 0.4) !important;
     opacity: 0.3 !important;
     pointer-events: none;
+    border-radius: 4px;
     cursor: default;
   }
-  .active-send-sms-code {
-    width: 106px !important;
-    height: 40px;
+  .reset-pwd-phone .active-send-sms-code {
+    width: 86px !important;
+    height: 50px;
     border: 1px solid #DCE4E6;
     float: right;
     padding: .5em .92857em;
@@ -409,13 +424,14 @@
     box-shadow: none !important;
     cursor: pointer;
     color: #fff;
-    background-color: #fe7300;
+    background-color: #4d7fff;
+    border-radius: 4px;
   }
 
 
   .inactive-reset-submit-phone {
-    width: 298px;
-    height: 40px;
+    width: 380px;
+    height: 50px;
     font-size: 18px;
     line-height: 22px;
     padding: 8px 26px;
@@ -426,14 +442,16 @@
     box-shadow: none !important;
     opacity: 0.3 !important;
     pointer-events: none;
+    border-radius: 4px;
   }
 
   .active-reset-submit-phone {
-    background-color: #fe7300;
+    border-radius: 4px;
+    background-color: #4d7fff;
     opacity: 1 !important;
     color: #fff;
-    width: 298px;
-    height: 40px;
+    width: 380px;
+    height: 50px;
     font-size: 18px;
     line-height: 22px;
     padding: 8px 26px;
