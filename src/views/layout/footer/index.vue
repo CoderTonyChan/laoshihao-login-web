@@ -10,10 +10,10 @@
         </div>-->
         <p class="copyright">
           <a class="link" href="http://mall.lshao.cn/aboutMe">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <a class="link" href="http://mall.lshao.cn/privacy" @click.prevent="loadPage('privacy')">隐私政策</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <a class="link" href="http://mall.lshao.cn/privacy">隐私政策</a> &nbsp;&nbsp;|&nbsp;&nbsp;
           <!-- <a class="link" href="javascript:void(0)" @click.prevent="loadPage('disclaimer')">免责声明</a> |
           <a class="link" href="javascript:void(0)" @click.prevent="loadPage('about')">关于老师好商城</a>|-->
-          <a class="link" href="http://mall.lshao.cn/disclaimer" @click.prevent="loadPage('disclaimer')">免责声明</a>
+          <a class="link" href="http://mall.lshao.cn/disclaimer">免责声明</a>
         </p>
         <p
           class="copyright"
