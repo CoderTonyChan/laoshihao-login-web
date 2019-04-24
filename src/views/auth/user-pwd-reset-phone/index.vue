@@ -272,7 +272,7 @@
   .reset-form {
     display: block;
     padding: 23px 30px 55px 30px;
-    height: 540px;
+    height: 600px;
     background-color: #fff;
     position: relative;
     // overflow: hidden;

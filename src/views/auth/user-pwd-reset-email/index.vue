@@ -142,13 +142,13 @@
 
   }
   .reset-form{
-    display: block;
-    padding: 23px 30px 55px 30px;
-    height: 360px;
-    border: 1px solid #E3E9ED;
-    background-color: #fff;
-    position: relative;
-    overflow: hidden;
+    // display: block;
+    // padding: 23px 30px 55px 30px;
+    // height: 360px;
+    // border: 1px solid #E3E9ED;
+    // background-color: #fff;
+    // position: relative;
+    // overflow: hidden;
   }
 
   .reset-header,.send-header {
