@@ -124,11 +124,11 @@
   }
 
   .reset-pwd-phone {
-    width: 480px;
-    height: 360px;
-    position: absolute;
-    left: 50%;
-    margin-left: -240px;
+    // width: 480px;
+    // height: 360px;
+    // position: absolute;
+    // left: 50%;
+    // margin-left: -240px;
   }
 
   .send-form {
