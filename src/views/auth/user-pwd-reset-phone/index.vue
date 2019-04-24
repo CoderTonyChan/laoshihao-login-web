@@ -304,7 +304,6 @@
   }
 
   .reset-content {
-    
     width: 380px;
     height: 400px;
     margin: 0 auto;

@@ -177,11 +177,11 @@
   }
 
   .reset-content{
-    width: 298px;
-    height: 200px;
-    position: relative;
-    left: 50%;
-    margin-left: -149px;
+    // width: 298px;
+    // height: 200px;
+    // position: relative;
+    // left: 50%;
+    // margin-left: -149px;
   }
   .send-content{
     width: 298px;
