@@ -53,6 +53,7 @@ export default {
         confirmPwd: "",
         imageCode: "",
         smsCode: "",
+        inviteCode: '',
         registerSource: "PC"
       },
       checkTelephoneResult: false,
@@ -81,6 +82,7 @@ export default {
         });
     },
     submit() {
+      console.log(this.getUrlParam('inviteCode'));
       let validateResult = this.formValidate();
       // 验证成功
       if (validateResult.status) {
@@ -99,6 +101,7 @@ export default {
       }
     },
     register(resolve) {
+      this.registerForm.inviteCode = this.getUrlParam('inviteCode');
       var params = this.registerForm;
       params.imageCode = null;
       this.$http({
