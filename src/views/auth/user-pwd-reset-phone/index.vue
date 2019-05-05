@@ -145,10 +145,11 @@
           method: 'GET',
           url: `/uac/auth/code/sms`,
           headers: {
-            'deviceId': that.deviceId
+            'deviceId': that.deviceId,
           },
           params: {
-            smsCode: smsCode
+            smsCode: smsCode,
+            mobile: mobileNo
           }
         }).then((res) => {
           if (!res.result) {
