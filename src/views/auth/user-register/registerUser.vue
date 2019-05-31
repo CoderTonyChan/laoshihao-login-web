@@ -65,8 +65,8 @@ export default {
     this.getImage();
   },
   mounted() {
-    const inviteCode = this.getUrlParam('inviteCode');
-    window.location.href = `http://mall.lshao.cn?inviteCode=${inviteCode}`;
+    // const inviteCode = this.getUrlParam('inviteCode');
+    // window.location.href = `http://mall.lshao.cn?inviteCode=${inviteCode}`;
   },
   methods: {
     getImage() {

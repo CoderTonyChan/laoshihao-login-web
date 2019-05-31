@@ -4,6 +4,7 @@ import ResetPwdPhone from './user-pwd-reset-phone/index.vue';
 import ResetPwd from './user-pwd-reset/index.vue';
 import Register from './user-register/index.vue';
 import ActiveUser from './user-active/index.vue';
+import RegisterUser from './user-register/registerUser.vue';
 
 export default {
   Login,
@@ -11,5 +12,6 @@ export default {
   ResetPwdPhone,
   ResetPwd,
   Register,
+  RegisterUser,
   ActiveUser
 };

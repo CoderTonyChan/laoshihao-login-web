@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       component: resolve => require(['views/layout/index.vue'], resolve),
-      redirect: {name: 'Login'},
+      redirect: { name: 'Login' },
       children: [{
         meta: {
           name: '用户登录',
@@ -25,6 +25,14 @@ export default new Router({
         path: 'register',
         name: 'Register',
         component: Auth.Register
+      }, {
+        meta: {
+          name: '用户注册',
+          noRequiredAuth: true
+        },
+        path: 'registeruser',
+        name: 'RegisterUser',
+        component: Auth.RegisterUser
       }, {
         meta: {
           name: '忘记密码',

@@ -3,7 +3,7 @@
     <div class="header-in w">
       <div class="header-l">
         <a href="http://mall.lshao.cn" target="_blank" class="header-font">
-          <img src="http://oss.lshao.cn/images/Logo.png">
+          <img src="https://lshaomall.oss-cn-shenzhen.aliyuncs.com/images/Logo3.png">
         </a>
         <!-- <ul> -->
         <!-- <li><a href="http://mall.lshao.cn" target="_blank" class="header-font">老师好平台</a></li> -->
@@ -14,7 +14,8 @@
       </div>
       <div class="header-r">
         <a class="reg" v-if="!isRegister">还没有注册？
-          <span class="link" @click="loadPage('Register')">立即注册</span>
+          <!-- <span class="link" @click="loadPage('Register')">立即注册</span> -->
+          <span class="link" @click="loadPage('RegisterUser')">立即注册</span>
         </a>
         <a class="reg" v-if="isRegister">已有账号？
           <span class="link" @click="loadPage('Login')">立即登录</span>

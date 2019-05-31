@@ -145,7 +145,7 @@
           method: 'GET',
           url: `/uac/auth/code/sms`,
           headers: {
-            'deviceId': that.deviceId,
+            'deviceId': that.deviceId
           },
           params: {
             smsCode: smsCode,
