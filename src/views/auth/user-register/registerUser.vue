@@ -16,6 +16,8 @@
         
           <input class="main-input" type="password" v-model="registerForm.confirmPwd" placeholder="请再次输入密码">
        
+          <input class="main-input" v-model="registerForm.userName" placeholder="请输入昵称">
+
           <input
           
             type="text"
@@ -513,7 +515,7 @@ export default {
   box-shadow: none !important;
   // background-color: #dcddde !important;
   color: #4d7fff;
-  opacity: 0.3 !important;
+  opacity: 0.6 !important;
   pointer-events: none;
   cursor: default;
 	border-radius: 4px;

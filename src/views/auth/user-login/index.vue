@@ -94,6 +94,7 @@
             console.log(`登录成功 : this.redirectUri:${this.redirectUri}`);
             console.log(`process.env.NODE_ENV :${process.env.NODE_ENV} `);
             console.log(res.result);
+            this.$store.dispatch('update_user_info', res.result.username);
             // debugger;
             window.location.href = this.redirectUri;
             // PcCookie.set({

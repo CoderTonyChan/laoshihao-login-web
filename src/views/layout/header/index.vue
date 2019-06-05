@@ -3,7 +3,7 @@
     <div class="header-in w">
       <div class="header-l">
         <a href="http://mall.lshao.cn" target="_blank" class="header-font">
-          <img src="https://lshaomall.oss-cn-shenzhen.aliyuncs.com/images/Logo3.png">
+          <img src="https://lshaomall.oss-cn-shenzhen.aliyuncs.com/images/Logo4.png">
         </a>
         <!-- <ul> -->
         <!-- <li><a href="http://mall.lshao.cn" target="_blank" class="header-font">老师好平台</a></li> -->
@@ -40,7 +40,7 @@ export default {
   computed: {
     isRegister() {
       console.log(this.$route.name);
-      return this.$route.name === 'Register';
+      return this.$route.name === 'RegisterUser';
     },
     cartList() {
       return this.$store.getters.getCartList;
